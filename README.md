@@ -69,9 +69,12 @@ En guide til enten digital ocean
 * Tryk shift og x nede for at forlade konfigurationen
 * skriv || ssh-keygen -t rsa ||
 * Nu skal vi åbne den offentlige nøgle, skriv: ||cat ~/.ssh/id_rsa.pub|| Kopier indholdet af den offentlige nøgle til GitHub -> Settings -> SSH and GPG keys -> New SSH key
+* Opret en mappe til din applikation ved at skrive ||mkdir ~/www||
+* For at komme ind i mappen, skriv ||cd ~/www||
 * Klon dit repository, skriv: || git clone git@github.com:brugernavn/repository ||
-* For at hente opdateringer fra dit repository, skriv: ||git pull git@github.com:brugernavn/repository||
+* Skriv ls -l for at tjekke om den nu ligger derinde
 * Download node i puTTY, skriv ||npm install||
+* For at hente opdateringer fra dit repository, skriv: ||git pull git@github.com:brugernavn/repository||
 * For at starte || pm2 startup || og efter skriver du: || pm2 start api/app.js || 
 
 
