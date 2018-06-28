@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="style_admin.css">
+    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+    <title>Admin Panel</title>
+
+    <script src="../helpers.js"></script>
+
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+
+    <script>
+        if (sessionStorage["token"] == undefined) {
+            window.location.replace(adress + 'login.html')
+        }
+    </script>
+
+
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-default" id="position" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for mobile -->
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- When menubar collapses, only the "brand" button and toggle will remain -->
+
+                <a href="index.html">
+                    <img class="nav_logo" src="../billeder/logo.png" alt="Hifi klubbens logo">
+                </a>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <!-- Right side elements -->
+                    <ul class="nav navbar-nav navbar-right">
+                        <form class="navbar-form navbar-left" id="soeg" role="search">
+                            <div class="form-group">
+                                <input type="text" name="soeg" class="form-control" placeholder="Søg...">
+                            </div>
+                            <button type="submit" class="btn btn-default btn-xs">Søg</button>
+                        </form>
+                        <li class="mobile_menu">
+                            <a href="panel_forside.html">Produkter</a>
+                        </li>
+                        <li class="mobile_menu">
+                            <a href="kategorier.html">Kategorier</a>
+                        </li>
+                        <li class="mobile_menu">
+                            <a href="producenter.html">Producenter</a>
+                        </li>
+                        <li class="mobile_menu">
+                            <a href="brugere.html">Brugere</a>
+                        </li>
+                        <li class="mobile_menu">
+                            <button id="logout">logout</button>
+                        </li>
+                    </ul>
+                    <!-- Right side elements -->
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+        </nav>
+
+    </header>
+
+    <main class="clearfix bund">
+
+        <div id="forside_kant" class="ned clearfix">
+            <p class="kant_p">|| ADMIN PANEL ||</p>
+
+        </div>
+        <main>
+
+            <div class="col-md-3 clearfix">
+                <form>
+                    <div class="dropdown">
+                        <button type="button" class="btn btn-select" data-toggle="dropdown">Vælg kategori</button>
+                        <ul class="dropdown-menu dropdown-menu-select">
+                            <li>
+                                <label class="dropdown-radio">
+                                    <ul id="kategori"></ul>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </form>
+
+                <form>
+                    <div class="dropdown">
+                        <button type="button" class="btn btn-select" data-toggle="dropdown">Vælg producent</button>
+                        <ul class="dropdown-menu dropdown-menu-select">
+                            <li>
+                                <label class="dropdown-radio">
+                                    <ul id="producent"></ul>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </form>
+
+                <form class="opret_produkt" id="produkt_form" enctype="multipart/form-data">
+                    <h3>Post</h3>
+
+                    <input placeholder="Navn på varen..." type="text" name="vare_navn" id="vare_navn">
+
+                    <select name="kategori_id" id="kategori_id">
+                    </select>
+
+                    <select name="producent_id" id="producent_id">
+                    </select>
+
+                    <textarea placeholder="Beskrivelse af varen..." name="vare_beskrivelse" id="vare_beskrivelse"></textarea>
+
+                    <input placeholder="Pris på varen i tal og dkk..." type="text" name="vare_pris" id="vare_pris">
+
+                    <input type="hidden" name="gammelt_gemt_billede">
+
+                    <input type="file" name="vare_billede" multiple>
+
+                    <img id="gammelt_billede">
+
+                </form>
+                <span id="fejlbesked"></span>
+                <button class="submit button" id="gem">
+                    <i class="glyphicon glyphicon-send"></i>Post</button>
+
+            </div>
+
+            <div class="col-md-9 clearfix" id="produkt_liste">
+                <table class="table table-striped forside_tabel" id="post_list">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Produkt navn</th>
+                            <th>Kategori</th>
+                            <th>Producent</th>
+                            <th>Ret</th>
+                            <th>Slet</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin_produkt_content"></tbody>
+                </table>
+            </div>
+
+        </main>
+
+        <div id="forside_kant" class="ned col-md-12">
+            <p class="kant_p">|| ADMIN PANEL ||</p>
+
+        </div>
+
+        <footer>
+
+            <div class="bundlogos">
+                <div class="col-md-12" id="footer_farve">
+
+                    <div class="col-md-4 venstre">
+                        <p>Kundeservice tlf. 70 80 90 00</p>
+                        <p>Mandag-fredag kl. 9-18, lørdag kl. 10-15</p>
+                        <p>Eller kontakt os via formlen!</p>
+                    </div>
+
+                    <div class="col-md-4 logos">
+                        <a href="#" class="btn btn-default">
+                            <i class="fa fa-instagram"></i>
+                        </a>
+                        <a href="#" class="btn btn-default">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </div>
+                    <div class="col-md-4 hoejre">
+                        <p>Vores kunder anmelder os ofte på Trustpilot!</p>
+                        <img src="../billeder/trustpilot.png" alt="trustpilot" class="trustpilot">
+                        <a href="https://dk.trustpilot.com/review/hifiklubben.dk" target="_blank">Læs vores anmeldelser...</a>
+                    </div>
+                </div>
+        </footer>
+
+        </div>
+
+        <script src="../jquery-3.3.1.min(1).js"></script>
+        <!--indlæs først! ellers virker bootstrap ikke //-->
+        <script src="../js/bootstrap.min.js"></script>
+
+        <script src="panel_forside.js"></script>
+</body>
+
+</html>

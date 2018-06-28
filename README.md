@@ -68,7 +68,8 @@ En guide til enten digital ocean
 * For at tjekke konfigurationen, skriv ||nano ~/ .gitconfig||
 * Tryk shift og x nede for at forlade konfigurationen
 * Nu skal vi åbne den offentlige nøgle, skriv: ||nano ~/.ssh/id_rsa.pub|| Kopier indholdet af den offentlige nøgle til GitHub -> Settings -> SSH and GPG keys -> New SSH key
-* 
+
+* node site/app.js 
 
 
 
