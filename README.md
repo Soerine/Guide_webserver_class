@@ -53,7 +53,7 @@ En guide til enten digital ocean
 * Skriv ||yum install nodejs||
 * Skriv ||yum install npm|| tryk ||y|| tryk ||y||
 * Skriv ||sudo npm config set strict -ssl false||
-* Skriv ||yum install -g n||
+* Skriv ||npm install -g n||
 * Skriv ||n lts||
 * Skriv ||n||
 * Gå herefter ind på digital ocean igen, og ind på din droplet, tryk herefter på den grønne 'on' knap, for at slukke den. Når den er slukket, så tænd den igen. Altså genstarter du den. 
@@ -67,10 +67,10 @@ En guide til enten digital ocean
 * Skriv så ||git config --global user.email "din@email.dk"
 * For at tjekke konfigurationen, skriv ||nano ~/ .gitconfig||
 * Tryk shift og x nede for at forlade konfigurationen
-* Nu skal vi åbne den offentlige nøgle, skriv: ||nano ~/.ssh/id_rsa.pub|| Kopier indholdet af den offentlige nøgle til GitHub -> Settings -> SSH and GPG keys -> New SSH key
+* skriv || ssh-keygen -t rsa ||
+* Nu skal vi åbne den offentlige nøgle, skriv: ||cat ~/.ssh/id_rsa.pub|| Kopier indholdet af den offentlige nøgle til GitHub -> Settings -> SSH and GPG keys -> New SSH key
 * Klon dit repository, skriv: || git clone git@github.com:brugernavn/repository ||
 * For at hente opdateringer fra dit repository, skriv: ||git pull git@github.com:brugernavn/repository||
-
 * Download node i puTTY, skriv ||npm install||
 * For at starte || pm2 startup || og efter skriver du: || pm2 start api/app.js || 
 
