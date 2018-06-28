@@ -68,8 +68,11 @@ En guide til enten digital ocean
 * For at tjekke konfigurationen, skriv ||nano ~/ .gitconfig||
 * Tryk shift og x nede for at forlade konfigurationen
 * Nu skal vi åbne den offentlige nøgle, skriv: ||nano ~/.ssh/id_rsa.pub|| Kopier indholdet af den offentlige nøgle til GitHub -> Settings -> SSH and GPG keys -> New SSH key
+* Klon dit repository, skriv: || git clone git@github.com:brugernavn/repository ||
+* For at hente opdateringer fra dit repository, skriv: ||git pull git@github.com:brugernavn/repository||
 
-* node site/app.js 
+* Download node i puTTY, skriv ||npm install||
+* For at starte || pm2 startup || og efter skriver du: || pm2 start api/app.js || 
 
 
 
